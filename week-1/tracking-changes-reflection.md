@@ -1,5 +1,5 @@
 ##How does tracking and adding changes make developers' lives easier?
-It makes it easier to understand other people's contributions and also to pinpoint the exact addition that changed or broke the program.
+It makes it easier to understand other people's contributions and also to pinpoint the exact addition that changed or broke the program. You can then go back to a previous state if needed.
 
 ##What is a commit?
 A commit is a saved snapshot of the code.
