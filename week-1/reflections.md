@@ -38,4 +38,13 @@ I also downloaded a mindfulness meditation app that one of the articles recommen
 
 -help: when used by itself, displays a list of available commands. When a command is used as a parameter, it displays information about that command.
 
-##
+##1.4 Create, Fork, and Clone Repositories (medium)
+Create a new repo: Go to GitHub and press the "+" button in the top right.
+
+Fork a repo: Go into the repo on GitHub that you want to fork and press the "Fork" button to the top right.
+
+Clone a repo: In terminal, navigate to the desired target directory. Then type git clone [URL of repo] (the URL can be found within the repo's page on GitHub).
+
+You would fork a repo to maintain the connection to the original document. You would create a new repo if you were starting a completely new project.
+
+Challenges: I found the lesson pretty straightforward, although I was a little confused by how the Summary section for this assignment advised me to use the command line, but then the Release 0 instructions told me to use the GitHub website interface. The video in Release 1 also focused on terminal commands, so I just ended up doing it both ways, which helped me get more practice with the terminal.
