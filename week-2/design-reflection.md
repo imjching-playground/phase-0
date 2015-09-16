@@ -19,4 +19,4 @@ As with other jobs in technology, it's crucial to keep up with the latest innova
 User experience (UX) design is about creating an enjoyable experience so that the user will be motivated to interact with the website. UX designers aim to remove frustration and tailor sites to their user demographic.
 
 ###7. Which parts of the challenge did you find tedious?
-I have a decent grasp of HTML and CSS, so I found some of the videos that preceded this challenge to be a little redundant. I did find the historical information on HTML very interesting though.
+I have a decent grasp of HTML and CSS already, so I found some of the videos that preceded this challenge to be a little redundant. I did find the historical information on HTML very interesting, however.
