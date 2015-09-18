@@ -1,0 +1,79 @@
+/* You'll want to make the site responsive and nice looking here. Have fun!*/
+
+#wrapper {
+  text-align: left;
+  margin: 0px auto;
+  padding: 0px;
+  border:0;
+  width: 96%; /* was 960px */
+  background: url("http://cdn.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-6-full.jpg") repeat;
+  color:black;
+  font-size: 2em;
+}
+
+a {
+  color:black;
+}
+
+#header {
+  float: both;
+  margin: 0 0 15px 0;
+  background: black;
+  color: white;
+  text-align: center;
+}
+
+#top-a {
+  float: left;
+  width: 20%;
+}
+
+#top-a li{
+  padding-top: 20px;
+}
+
+#content {
+  float: left;
+  width: 75%;
+}
+
+img {
+  width: 100%;
+}
+
+/* obsolete???
+#side-b {
+  float: right;
+  width: 150px;
+}
+*/
+
+#footer {
+  clear: both;
+  background: #A2A2A2;
+  text-align: center;
+}
+
+
+/** iPhones **/
+@media only screen and (min-device-width: 320px) and (max-device-width: 736px) {
+
+#wrapper {
+  margin: 3% auto;
+  width: 90%;
+  text-align: center;
+}
+
+#top-a {
+  width: 100%;
+}
+
+#top-a li{
+  display: inline;
+}
+
+#content {
+  width: 100%;
+}
+
+}
