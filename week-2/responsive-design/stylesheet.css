@@ -2,12 +2,12 @@
 
 #wrapper {
   text-align: left;
-  margin: 0px auto;
+  margin: auto;
   padding: 0px;
-  border:0;
+  border: 0;
   width: 96%; /* was 960px */
   background: url("http://cdn.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-6-full.jpg") repeat;
-  color:black;
+  color: black;
   font-size: 2em;
 }
 
@@ -74,7 +74,7 @@ img {
 #top-a {
   margin-top: 4%;
   position: fixed;
-  width: 100%;
+  width: 90%;
 }
 
 #top-a li{
