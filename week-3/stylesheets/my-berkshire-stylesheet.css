@@ -1,0 +1,98 @@
+/*
+  1. When linking an external file to an HTML file, always make sure to link them in the right order. The lower the load order, the higher the priority. That means the last stylesheet will override the previous ones if there is any conflict.
+
+  2. I wouldn't say we used any "tricks". The hardest part was getting the left and right sides of the list to line up properly, but we figured it out pretty quickly.
+
+  3. We mostly used color and font-size to modify style. Obviously, you can see what we did below :)
+
+  4. The HTML had most of the necessary classes and id attributes already, since my partner and I planned ahead last week. Basically, anytime two things were formatted in the same way, we tried to use classes and whenever something was formatted in a unique way, we would use an id. We generally avoided using classes and id's if we could easily reference the element selector itself, however. That seemed simpler than having a bazillion classes/id's.
+
+  5. I may be a little biased on the issue, but I believe our version of the site follows much better coding practices, by modern standards. BH's site does all formatting in the HTML and uses tables for positioning. There is a lot of repetition and it would be a nightmare to update. Our code accomplished a nearly identical presentation (it could be identical, if we spent more time), but with only half as many lines of HTML. Nonetheless, I was slightly impressed with the website's scalability - not everything was bad about tables!
+*/
+
+body {
+  color: #000080;
+  background-color: #ffffff;
+}
+
+a {
+  color:#800080;
+}
+  a:visited {
+    color:#ff0000;
+  }
+
+#leftlinks,#rightlinks {
+  width: 45%;
+  display: inline-block;
+}
+  #rightlinks {
+    vertical-align: top;
+  }
+
+ul {
+  margin-left: 5%;
+}
+
+.linknote {
+  font-size: .5em;
+}
+
+header {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1em;
+  border-bottom:  1px gray solid;
+}
+  header p {
+    font-size: .75em;
+  }
+
+h1 {
+  font-size: 1.25em;
+  margin: .15em;
+}
+
+#subtitle {
+  font-size: 1em;
+}
+
+.capital {
+  font-size: 1.65em;
+}
+
+#inc {
+  font-size: 75%;
+}
+
+li {
+  height: 60px
+}
+
+#geico {
+  font-size: .75em;
+  text-align: center;
+  padding: 1em 0;
+  border-top: 1px gray solid;
+  border-bottom:  1px gray solid;
+}
+
+p {
+  margin: 0;
+}
+
+#legal {
+  padding-bottom: 1em;
+  border-top: 1px gray solid;
+}
+  #legal p {
+    margin: 1em 0;
+  }
+
+.copyright {
+  font-size: .5em;
+}
+
+#comments {
+  padding: 1em 0;
+}
