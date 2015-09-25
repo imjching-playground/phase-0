@@ -1,13 +1,13 @@
 #Reflection 3.4
-![1 - Colors](imgs/1-change_colors.png)
-![2 - Column](imgs/2-column.png)
-![3 - Row](imgs/3-row.png)
-![4 - Equidistant](imgs/4-equidistant.png)
-![5 - Squares](imgs/5-squares.png)
-![6 - Footer](imgs/6-footer.png)
-![7 - Header](imgs/7-header.png)
-![8 - Sidebar](imgs/8-sidebar.png)
-![9 - Creative](imgs/9-get_creative.png)
+![1 - Colors](imgs/1-change_colors.png "Colors")
+![2 - Column](imgs/2-column.png "Column")
+![3 - Row](imgs/3-row.png "Row")
+![4 - Equidistant](imgs/4-equidistant.png "Equidistant")
+![5 - Squares](imgs/5-squares.png "Squares")
+![6 - Footer](imgs/6-footer.png "Footer")
+![7 - Header](imgs/7-header.png "Header")
+![8 - Sidebar](imgs/8-sidebar.png "Sidebar")
+![9 - Creative](imgs/9-get_creative.png "Creative")
 
 ##How can you use Chrome's DevTools inspector to help you format or position elements?
 The inspector gives you access to all of the element's properties for positioning/styling and allows you to change them easily. It also provides a nice visual display of elements that could otherwise be invisible (size, margins, padding).
