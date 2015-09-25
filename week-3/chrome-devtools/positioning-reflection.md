@@ -55,7 +55,7 @@ Fixed and absolute are very similar:
 ##What are the differences between Margin, Border, and Padding?
 A border is the boundary around an element as defined by its height and width properties (which are calculated automatically, if not deliberately defined). Borders are invisible by default, but can be given properties such as color and thickness.
 
-Margin and padding can both create a kind of "spacing" around content, though they work differently and have distinct roles. Margin is the space outside of the border of an element that it will try to keep clear of other elements. Padding is the space within the border that it will try to keep clear of content, essentially pushing content away from the sides of the box (all elements are boxes).
+Margin and padding can both create a kind of "spacing" around content, though they work differently and have distinct roles. Margin is the space outside of the border of an element that it will try to keep clear of other elements. Padding is the space within the border that it will try to keep clear of content, essentially pushing its element's content inward from the sides of the box (all elements are boxes).
 
 ##What was your impression of this challenge overall? (love, hate, and why?)
 It was fun. We got stumped a couple times but we were always able to figure it out.
