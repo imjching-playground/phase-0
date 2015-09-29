@@ -40,7 +40,7 @@ Strings are values placed between single or double quotes and are generally used
 
 ## What are local variables? Why and when would you use them?
 
-A local variable is a variable that can be accessed that can only be accessed from within its scope. A variable that is local to my `hours_in_year` method above could not be accessed by my `minutes_in_decade` method, which is why I put my DAYS_IN_YEAR variable (or `constant`, rather) at a higher-level scope. Local variables are conventionally written in lower-case snake-case (`my_variable`).
+A local variable is a variable that can only be accessed from within its scope. A variable that is local to my `hours_in_year` method above could not be accessed by my `minutes_in_decade` method, which is why I put my `DAYS_IN_YEAR` variable (or *constant*, rather) at a higher-level scope. Local variables are conventionally written in lower-case snake-case (`my_variable`).
 
 ## How was this challenge? Did you get a good review of some of the basics?
 
