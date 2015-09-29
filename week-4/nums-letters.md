@@ -19,3 +19,29 @@ If you use an integer and a float in a division (or other mathematical) operatio
     def minutes_in_decade
       return 10 * DAYS_IN_YEAR * 24 * 60
     end
+
+#Reflection
+
+1. How does Ruby handle addition, subtraction, multiplication, and division of numbers?
+
+Addition, subtraction, and multiplication work as expected. Ruby will convert both numbers to float to provide a float answer, if at least one of the numbers is a float, which would almost always be the desired answer. Division is handled differently depending on whether the numbers are floats or integers (see above).
+
+2. What is the difference between integers and floats?
+
+Please see above. I'll report this to DBC as a duplicate question.
+
+3. What is the difference between integer and float division?
+
+Please see above. I'll report this to DBC as a duplicate question.
+
+4. What are strings? Why and when would you use them?
+
+Strings are values placed between single or double quotes and are generally used to store text values. Normally, strings are indivisible text values, such as names, words, or phrases. You could, for example, use a string to ask a user a question and then store their response in another string variable.
+
+5. What are local variables? Why and when would you use them?
+
+A local variable is a variable that can be accessed that can only be accessed from within its scope. A variable that is local to my `hours_in_year` method above could not be accessed by my `minutes_in_decade` method, which is why I put my DAYS_IN_YEAR variable (or `constant`, rather) at a higher-level scope. Local variables are conventionally written in lower-case snake-case (`my_variable`).
+
+6. How was this challenge? Did you get a good review of some of the basics?
+
+I had no trouble with this challenge. It was my first time using rspec, so that was cool.
