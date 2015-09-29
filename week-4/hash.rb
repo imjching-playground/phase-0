@@ -7,7 +7,7 @@
 
 # my_info is empty to start.  Edit this!
 my_info = {
-  # I've removed the colons beofre the keys since the syntax I'm using automatically marks the keys as symbols.
+  # I've removed the colons before the keys since the syntax I'm using automatically marks the keys as symbols.
   first_name: "Steven",
   last_name: "Broderick",
   hometown: "San Francisco",
