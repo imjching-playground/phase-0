@@ -1,0 +1,23 @@
+/* CSS GPS 2.1 A. Blair, S. Broderick, Guide: Laura Crowe*/
+.column-1, .column-2 {
+    background-color: salmon;
+    margin: 0 2.5%;
+    width: 44%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 1em;
+    box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+a {
+    font-family: "Comic Sans", cursive;
+}
+body {
+    background-image:url('http://nicolascage.us/wp-content/uploads/2013/08/Classic.jpg');
+    text-shadow:2px 2px cadetblue;
+}
+header, footer {
+    color:chartreuse;
+}
