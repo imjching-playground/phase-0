@@ -67,15 +67,10 @@ end
 # Person 5 (Steven Broderick)
 def my_array_splitting_method(source)
 
-  integers = []
-  strings = []
+  integers = source.select { |item| item.is_a? Integer}
+  others = source.select { |item| !item.is_a? Integer}
 
-  source.each do |item|
-    integers << item if item.is_a? Integer
-    strings << item if item.is_a? String
-  end
-
-  [integers, strings]
+  [integers, others]
 
 end
 
@@ -84,12 +79,9 @@ def my_hash_splitting_method(source, age)
   younguns = []
   geezers = []
 
-  source.each do |key, value|
-    if value <= age
-      younguns << [key, value] 
-    else
-      geezers << [key, value]
-    end
+  source.each do |key, val| 
+    younguns << [key, val] if val <= age 
+    geezers << [key, val] if val > age
   end
 
   [younguns, geezers]
@@ -97,16 +89,21 @@ def my_hash_splitting_method(source, age)
 end
 
 # Identify and describe the Ruby method(s) you implemented.
-# :my_array_splitting_method takes an array of integers and strings as its argument and 
-# splits the array into two arrays, one with integers and one with strings. Then it returns 
-# an array containing both of those arrays. The method takes advantage of the :is_a? method, 
-# which takes a class name as its argument. It returns true or false, depending on whether
+
+# :my_array_splitting_method takes an array as its argument and splits the array into two arrays, 
+# one with integers and one with everything else. Then it returns an array containing both of those 
+# arrays. The method takes advantage of the :select and :is_a? methods:
+# => :select returns all items that match the condition in the block.
+# => :is_a? takes a class name as its argument and returns true or false, depending on whether
 # the object calling the method is a member of the argument class.
 
+
 # :my_hash_splitting_method takes two arguments: (1) a hash that has integers for its values and (2) 
-# an integer. It then creates two arrays: one containing the key-value pairs for which the values
-# are less than or equal to the second argument; the other array contains the rest of the key-value 
-# pairs. Then it returns an array containing both of those arrays.
+# an integer. Then it loops through the hash to build two arrays: one containing the key-value pairs 
+# for which the values are less than or equal to the second argument; the other array contains the 
+# rest of the key-value pairs. Then it returns an array containing both of those arrays. I initially
+# tried to use the :select method, but it returns the pairs as key-value pairs when the directions 
+# wanted them in 2-element arrays.
 
 
 # Release 3: Reflect!
