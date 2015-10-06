@@ -64,26 +64,47 @@ end
 #
 
 
-# Person 5
+# Person 5 (Steven Broderick)
 def my_array_splitting_method(source)
-  source # This line is here to make sure all tests initially fail. Delete it when you begin coding.
+
+  integers = []
+  strings = []
+
+  source.each do |item|
+    integers << item if item.is_a? Integer
+    strings << item if item.is_a? String
+  end
+
+  [integers, strings]
+
 end
 
 def my_hash_splitting_method(source, age)
-  source # This line is here to make sure all tests initially fail. Delete it when you begin coding.
+
+  younguns = []
+  geezers = []
+
+  source.each do |key, value|
+    if value <= age
+      younguns << [key, value] 
+    else
+      geezers << [key, value]
+    end
+  end
+
+  [younguns, geezers]
+
 end
 
 # Identify and describe the Ruby method(s) you implemented.
-#
-#
-#
+# :my_array_splitting_method takes an array of integers and strings as its argument and 
+# splits the array into two arrays, one with integers and one with strings. Then it returns 
+# an array containing both of those arrays.
 
-
-# Release 1: Identify and describe the Ruby method you implemented. Teach your
-# accountability group how to use the methods.
-#
-#
-#
+# :my_hash_splitting_method takes two arguments: (1) a hash that has integers for its values and (2) 
+# an integer. It then creates two arrays: one containing the key-value pairs for which the values
+# are less than or equal to the second argument; the other array contains the rest of the key-value 
+# pairs. Then it returns an array containing both of those arrays.
 
 
 # Release 3: Reflect!
