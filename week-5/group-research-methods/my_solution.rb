@@ -99,7 +99,9 @@ end
 # Identify and describe the Ruby method(s) you implemented.
 # :my_array_splitting_method takes an array of integers and strings as its argument and 
 # splits the array into two arrays, one with integers and one with strings. Then it returns 
-# an array containing both of those arrays.
+# an array containing both of those arrays. The method takes advantage of the :is_a? method, 
+# which takes a class name as its argument. It returns true or false, depending on whether
+# the object calling the method is a member of the argument class.
 
 # :my_hash_splitting_method takes two arguments: (1) a hash that has integers for its values and (2) 
 # an integer. It then creates two arrays: one containing the key-value pairs for which the values
