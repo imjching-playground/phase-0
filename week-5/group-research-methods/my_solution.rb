@@ -94,11 +94,9 @@ end
 
 
 # :my_hash_splitting_method takes two arguments: (1) a hash that has integers for its values and (2) 
-# an integer. Then it loops through the hash to build two arrays: one containing the key-value pairs 
-# for which the values are less than or equal to the second argument; the other array contains the 
-# rest of the key-value pairs. Then it returns an array containing both of those arrays. I initially
-# tried to use the :select method, but it returns the pairs as key-value pairs when the directions 
-# wanted them in 2-element arrays.
+# an integer. It functions similarly to my other method, except that :select returns the key-value pairs
+# as hashes, instead of the two-element arrays that the instructions call for. That's why the final
+# line converts each of the groups to arrays with :to_a .
 
 
 # Release 3: Reflect!
