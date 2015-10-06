@@ -76,15 +76,10 @@ end
 
 def my_hash_splitting_method(source, age)
 
-  younguns = []
-  geezers = []
+  younguns = source.select { |key, val| val <= age }
+  geezers = source.select { |key, val| val > age }
 
-  source.each do |key, val| 
-    younguns << [key, val] if val <= age 
-    geezers << [key, val] if val > age
-  end
-
-  [younguns, geezers]
+  [younguns.to_a, geezers.to_a]
 
 end
 
