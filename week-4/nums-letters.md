@@ -11,14 +11,12 @@ Float division allows fractional answers, so that 3 divided by 2 is 1.5. This is
 If you use an integer and a float in a division (or other mathematical) operation, Ruby will automatically convert them both to floats and provide you with a float answer. Convenient!
 
     DAYS_IN_YEAR = 365.242 #this is a constant
+    hours_in_year = DAYS_IN_YEAR * 24
+    minutes_in_decade = 10 * DAYS_IN_YEAR * 24 * 60
 
-    def hours_in_year
-      return DAYS_IN_YEAR * 24
-    end
+    puts hours_in_year
+    puts minutes_in_decade
 
-    def minutes_in_decade
-      return 10 * DAYS_IN_YEAR * 24 * 60
-    end
 
 #Reflection
 
