@@ -48,9 +48,9 @@ def sentence_maker(array)
   array.each do |i|
     sentence = sentence + i.to_s + " "
   end
-  return sentence.strip + "."
-end
-
+  return sentence.strip + ".
+"en
+d
 
 # 6. sentence_maker refactored solution
 
