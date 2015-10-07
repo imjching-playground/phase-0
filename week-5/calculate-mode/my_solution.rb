@@ -97,8 +97,10 @@ end
 
 # What methods did you use to iterate through the content? Did you find any good ones when you were refactoring? Were they difficult to implement?
 # => We mostly just used :each to iterate through the data. We used :max in the refactored solution, which
-# => saved at least one line of code. We also came up with an approach using :inject, but we borrowed the idea
-# => from a post on overstack and, even though we made it our own, we didn't feel we should include it in our code:
+# => saved at least one line of code.
+
+# => We also came up with an approach using :inject, but we borrowed the idea
+# => from a post on StackOverflow and, even though we made it our own, we didn't feel we should include it in our code:
 
 # =>  This line would condense lines 74-75 to one line:
 # =>  num_counts = num_array.inject(Hash.new(0)) { |hash, n| hash[n] += 1; hash}
