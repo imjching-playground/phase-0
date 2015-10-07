@@ -66,7 +66,7 @@ end
 
 # What did you learn about pseudocode from working on this challenge?
 # => It was interesting pseudocoding the loop printing function. Nothing
-# => new for me here with respective to pseudocode, though.
+# => new for me here with respect to pseudocode, though.
 
 # What are the tradeoffs of using Arrays and Hashes for this challenge?
 # => I barely gave any thought to using an array on this challenge. If
@@ -91,7 +91,9 @@ end
 # What concepts were solidified in this challenge, and what concepts are still confusing?
 # => I had a little trouble at first realizing that the methods could change
 # => the value of the external variable. It seems obvious in retrospect that
-# => those methods are destructive.
+# => those methods are destructive. I would have thought to create a class for
+# => grocery lists instead of doing it this way, so it was forced me to be
+# => more creative.
 
 
 
