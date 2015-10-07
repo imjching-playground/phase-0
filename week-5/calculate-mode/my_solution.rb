@@ -87,13 +87,18 @@ end
 # => We used a hash because it allowed us to store each number and its count as linked data.
 
 # Were you more successful breaking this problem down into implementable pseudocode than the last with a pair?
-# => We didn't have any trouble writing the pseudocode. My partner had a clear idea of how to solve it and we worked together to figure out how to make that work with the tools available.
+# => We didn't have any trouble writing the pseudocode. My partner had a clear idea of how to solve it and we
+# => worked together to figure out how to make that work with the tools available.
 
 # What issues/successes did you run into when translating your pseudocode to code?
-# => One issue was that we wanted to iterate through each number in the input array and incremement the value of the corresponding key in the hash. That didn't work when the hash didn't contain that key yet, because we hadn't set default values.
+# => One issue was that we wanted to iterate through each number in the input array and incremement the value
+# => of the corresponding key in the hash. That didn't work when the hash didn't contain that key yet, because
+# => we hadn't set default values.
 
 # What methods did you use to iterate through the content? Did you find any good ones when you were refactoring? Were they difficult to implement?
-# => We mostly just used :each to iterate through the data. We used :max in the refactored solution, which saved at least one line of code. We also came up with an approach using :inject, but we borrowed the idea from a post on overstack and, even though we made it our own, we didn't feel we should include it in our code:
+# => We mostly just used :each to iterate through the data. We used :max in the refactored solution, which
+# => saved at least one line of code. We also came up with an approach using :inject, but we borrowed the idea
+# => from a post on overstack and, even though we made it our own, we didn't feel we should include it in our code:
 
-# This line could condense lines 74-75 to one line:
-# num_counts = num_array.inject(Hash.new(0)) { |hash, n| hash[n] += 1; hash}
+# =>  This line would condense lines 74-75 to one line:
+# =>  num_counts = num_array.inject(Hash.new(0)) { |hash, n| hash[n] += 1; hash}
