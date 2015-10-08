@@ -1,30 +1,29 @@
-# Calculate the mode Pairing Challenge
+require_relative "my_solution"
 
-# I worked on this challenge [by myself, with: ]
+describe 'mode' do
+  let(:array_1) { [1, 2, 3, 4, 5, 5, 7] }
+  let(:array_2) { [4, 4, 5, 5, 6, 6, 6, 7, 5] }
+  let(:array_3) { ["apple", "banana", "clementine", "banana", "cherry", "strawberry", "cherry"]}
 
-# I spent [] hours on this challenge.
+  it "is defined" do
+    expect(defined? mode).to eq 'method'
+  end
 
-# Complete each step below according to the challenge directions and
-# include it in this file. Also make sure everything that isn't code
-# is commented.
+  it "requires a single argument" do
+    expect(method(:mode).arity).to eq 1
 
+  end
 
+  it "returns the correct mode when mode is a unique integer" do
+    expect(mode(array_1)).to eq [5]
+  end
 
-# 0. Pseudocode
+  it "returns the correct mode when mode is not a unique integer" do
+    expect(mode(array_2)).to eq [5,6]
 
-# What is the input?
-# What is the output? (i.e. What should the code return?)
-# What are the steps needed to solve the problem?
+  end
 
-
-# 1. Initial Solution
-
-
-
-
-# 3. Refactored Solution
-
-
-
-
-# 4. Reflection
+  it "returns the correct mode for strings" do
+    expect(mode(array_3)).to eq ["banana", "cherry"]
+  end
+end
