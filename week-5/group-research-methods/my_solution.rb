@@ -79,7 +79,7 @@ p my_hash_splitting_method(my_family_pets_ages, 4)
 # Identify and describe the Ruby method(s) you implemented.
 
 # my_array_splitting_method takes an array as its argument and splits the array into two arrays, one with 
-#   integers and one with everything else (ages and names, in this case). Then it returns an array containing 
+#   integers (ages, here) and one with everything else (names, in this case). Then it returns an array containing 
 #   both of those arrays. The result is a 2-dimensional array. The method takes advantage of the #partition and 
 #   #is_a? methods:
 
@@ -91,9 +91,9 @@ p my_hash_splitting_method(my_family_pets_ages, 4)
 
 # my_hash_splitting_method takes two arguments: (1) a hash that has integers for its values (ages, here) and (2) 
 #   an integer (also an age, in this case). It splits the hash into two arrays, one containing the key-value pairs 
-#   (as 2-element arrays) for which the value (age) is less than the age passed as an argument. Then it returns an
-#   array containing both of those arrays. The result is a 3-dimensional array. This method also takes advantage of
-#   #partition, but the condition is different from the other method.
+#   (as 2-element arrays) for which the value (age) is less than or equal to the "age" argument and one for everything 
+#   else. Then it returns an array containing both of those arrays. The result is a 3-dimensional array. This method 
+#   also takes advantage of #partition, but the condition is different from the one in the other method.
 
 
 # Release 3: Reflect!
