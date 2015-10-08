@@ -73,9 +73,6 @@ def my_hash_splitting_method(source, age)
   source.partition { |key, val| val <= age }
 end
 
-p my_array_splitting_method(i_want_pets)
-p my_hash_splitting_method(my_family_pets_ages, 4)
-
 # Identify and describe the Ruby method(s) you implemented.
 
 # my_array_splitting_method takes an array as its argument and splits the array into two arrays, one with 
