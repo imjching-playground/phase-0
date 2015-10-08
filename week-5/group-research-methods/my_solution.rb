@@ -66,37 +66,31 @@ end
 
 # Person 5 (Steven Broderick)
 def my_array_splitting_method(source)
-
-  integers = source.select { |item| item.is_a? Integer}
-  others = source.select { |item| !item.is_a? Integer}
-
-  [integers, others]
-
+  source.partition { |item| item.is_a? Integer }
 end
 
 def my_hash_splitting_method(source, age)
-
-  younguns = source.select { |key, val| val <= age }
-  geezers = source.select { |key, val| val > age }
-
-  [younguns.to_a, geezers.to_a]
-
+  source.partition { |key, val| val <= age }
 end
 
 # Identify and describe the Ruby method(s) you implemented.
 
-# :my_array_splitting_method takes an array as its argument and splits the array into two arrays, 
-# one with integers and one with everything else. Then it returns an array containing both of those 
-# arrays. The method takes advantage of the :select and :is_a? methods:
-# => :select returns all items that match the condition in the block.
-# => :is_a? takes a class name as its argument and returns true or false, depending on whether
-# the object calling the method is a member of the argument class.
+# my_array_splitting_method takes an array as its argument and splits the array into two arrays, one with 
+#   integers (ages, here) and one with everything else (names, in this case). Then it returns an array containing 
+#   both of those arrays. The result is a 2-dimensional array. The method takes advantage of the #partition and 
+#   #is_a? methods:
 
+# #partition splits the items into two arrays, putting those that match the condition into one array
+#   and those don't into the other.
 
-# :my_hash_splitting_method takes two arguments: (1) a hash that has integers for its values and (2) 
-# an integer. It functions similarly to my other method, except that :select returns the key-value pairs
-# as hashes, instead of the two-element arrays that the instructions call for. That's why the final
-# line converts each of the groups to arrays with :to_a .
+# #is_a? takes a class name as its argument and returns true or false, depending on whether
+#   the object calling the method is a member of the argument class.
+
+# my_hash_splitting_method takes two arguments: (1) a hash that has integers for its values (ages, here) and (2) 
+#   an integer (also an age, in this case). It splits the hash into two arrays, one containing the key-value pairs 
+#   (as 2-element arrays) for which the value (age) is less than or equal to the "age" argument and one for everything 
+#   else. Then it returns an array containing both of those arrays. The result is a 3-dimensional array. This method 
+#   also takes advantage of #partition, but the condition is different from the one in the other method.
 
 
 # Release 3: Reflect!
