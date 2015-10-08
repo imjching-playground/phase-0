@@ -26,28 +26,25 @@
 
 # 1. Initial Solution
 
-# def separate_comma(int)
+def separate_comma(int)
+  result = ""
+  input = int.to_s.reverse
 
-#   result = ""
-#   input = int.to_s.reverse
+  i = 0
+  while i < input.length
+    result = input[i] + result
+    result = "," + result if (i + 1) % 3 == 0
+    i += 1
+  end
 
-#   i = 0
-#   while i < input.length
-#     result = input[i] + result
-#     result = "," + result if (i + 1) % 3 == 0
-#     i += 1
-#   end
+  result[0] = "" if result[0] == ","
 
-#   result[0] = "" if result[0] == ","
-
-#   result
-
-# end
+  result
+end
 
 # 2. Refactored Solution
 
 def separate_comma(int)
-
   int = int.to_s.split(//)
   result = []
 
@@ -60,8 +57,26 @@ def separate_comma(int)
   result[0].delete_at(0) if result[0][0] == ","
 
   result.join
-
 end
+
+# Re-Refactored Solution
+
+def separate_comma(int)
+  comma_num = ""
+  commas_remaining = (int.to_s.length - 1) / 3
+  int.to_s.reverse.split(//).each_slice(3) do |set|
+    comma_num << set.join
+    comma_num << "," if commas_remaining > 0
+    commas_remaining -= 1
+  end
+
+  comma_num.reverse
+end
+
+p separate_comma(99)
+p separate_comma(9999)
+p separate_comma(99999)
+p separate_comma(100990000)
 
 # 3. Reflection
 # What was your process for breaking the problem down? What different approaches did you consider?
