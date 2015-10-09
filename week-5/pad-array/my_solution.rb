@@ -1,6 +1,6 @@
 # Pad an Array
 
-# I worked on this challenge [by myself, with: ]
+# I worked on this challenge with: Peter Wiebe.
 
 # I spent 1.25 hours on this challenge.
 
