@@ -102,25 +102,22 @@ end
 # REFACTORED
 
 def generate_groups_refactored(list)
-
   no_of_groups = (list.length/5.0).ceil
-
-  groups = []
+  group_list = []
 
   no_of_groups.times do
     group = list.sample(5)
-    groups << group
-    group.each do |person|
-      list.delete(person)
-    end
+    group_list << group
+    group.each { |person| list.delete(person) }
   end
 
+  # prints each group as string
   n = 1
-  groups.each  { |group| puts "Group #{n} is: #{group}"; n += 1}
+  group_list.each  { |group| puts "Group #{n} is: #{group}"; n += 1}
 
 end
 
-# generate_groups_refactored(cohortians)
+# p generate_groups_refactored(cohortians)
 
 
 # *** REFLECTION ***
