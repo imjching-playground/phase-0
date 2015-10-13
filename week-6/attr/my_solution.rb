@@ -2,17 +2,28 @@
 
 # I worked on this challenge by myself.
 
-# I spent [#] hours on this challenge.
+# I spent 1 hour on this challenge.
 
 class NameData
+  attr_reader :name
 
+  def initialize
+    @name = "Steven"
+  end
 end
-
 
 class Greetings
+  def initialize
+    @name_data = NameData.new
+  end
 
+  def greet
+    puts "Hello, #{@name_data.name}. You're looking radiant today!"
+  end
 end
 
+# greeting = Greetings.new
+# puts greeting.greet
 
 
 # Reflection Part 1
