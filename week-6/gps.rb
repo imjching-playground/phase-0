@@ -67,7 +67,7 @@ def serving_size_calc(item_to_make, order_quantity)
 
   # could refactor this but won't due to time
   if hungry_people == 0
-    return "Calculations complete: Make #{order_quantity/serving_size} #{item_to_make}(s)"  # reword to a more readable version
+    return "Calculations complete: Make #{order_quantity/serving_size} #{item_to_make}(s)"
   elsif hungry_people < 5
     return "Calculations complete: Make #{order_quantity/serving_size} #{item_to_make}(s), you have #{hungry_people} hungry people. Make #{hungry_people} cookies!"
   elsif hungry_people == 6
@@ -87,3 +87,20 @@ p serving_size_calc("THIS IS AN ERROR", 5)
 
 #  Reflection
 
+# What did you learn about making code readable by working on this challenge?
+# => This felt like pure review for me. I suppose the most important lesson
+# => in this challenge is to ask some higher power how the program is
+# => *supposed* to work. There was no indication that serving_size_mod refers
+# => to people and not leftover food, and it was impossible to infer that from
+# => the code. The return strings at the end were also misleading as to its
+# => meaning, so the guide was the only one who knew.
+
+# Did you learn any new methods? What did you learn about them?
+# => I might have seen #values_at before, but never used it. It was used
+# => badly here.
+
+# What did you learn about accessing data in hashes?
+# => There are some very messy ways to do it if you are so inclined.
+
+# What concepts were solidified when working through this challenge?
+# => Bad code is hard to read.
