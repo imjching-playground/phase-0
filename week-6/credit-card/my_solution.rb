@@ -1,7 +1,7 @@
 # # Class Warfare, Validate a Credit Card Number
 
 
-# I worked on this challenge with: Un Choi].
+# I worked on this challenge with: Un Choi.
 # I spent 1.66 hours on this challenge.
 
 # Pseudocode
@@ -150,3 +150,25 @@ p my_bad_CC.check_card
 
 
 # Reflection
+
+# What was the most difficult part of this challenge for you and your pair?
+# => It was a little confusing to convert back and forth between integers and
+# => strings in order to pick out digits. We had to mentally keep track of
+# => what state the values were in at each point of the program. If I were to
+# => spend more time on this program, I might have added some comments to help
+# => with that.
+
+# What new methods did you find to help you when you refactored?
+# => We used methods that I was already familiar with. I introduced my partner
+# => to #split! and #map!.
+
+# => I did find myself wondering after the refactoring if there was a more
+# => efficient way of looping through every nth element, and discovered you
+# => can use the Range#step method. I would refactor using #step if I had more
+# => time.
+
+# What concepts or learnings were you able to solidify in this challenge?
+# => I'm not sure if I would split this up into as many methods if I were to
+# => do it again. #double_every_other and #sum_numbers are not really useful
+# => without the other and I think it adds unnecessary length and complexity
+# => to pass information between them.
