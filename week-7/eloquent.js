@@ -8,9 +8,8 @@ var foo = 5;
 foo++;
 
 // Favorite Food
-var favFood = prompt("What's your favorite food?")
+prompt("What's your favorite food?")
 console.log("Hey! That's my favorite too!")
-
 
 
 // Complete one of the exercises: Looping a Triangle, FizzBuzz, or Chess Board
