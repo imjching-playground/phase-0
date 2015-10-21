@@ -41,7 +41,7 @@
 //        PRINT "You died. Game over."
 
 
-//  DECLARE solved
+//  DECLARE function solved
 //    SET variable solved equal to true
 //    FOR EACH cell in table
 //      IF text is invisible AND isMine is false
@@ -63,7 +63,7 @@ function newBoard() {
   // randomize mine placement
   for (var rowIndex in board) {
     for (var cellIndex in board[rowIndex]) {
-      var rand = Math.floor((Math.random() * 4));
+      var rand = Math.floor((Math.random() * 3));
       if (rand === 0) {
         board[rowIndex][cellIndex] = "X";
       }
@@ -116,16 +116,16 @@ function newBoard() {
           var bottomCell = board[rowIndex + 1][cellIndex];
           var bottomLeftCell = board[rowIndex + 1][cellIndex - 1];
           var bottomRightCell = board[rowIndex + 1][cellIndex + 1];
-        }
 
-        if (bottomCell === "X") {
-          board[rowIndex][cellIndex] += 1;
-        }
-        if (bottomLeftCell === "X") {
-          board[rowIndex][cellIndex] += 1;
-        }
-        if (bottomRightCell === "X") {
-          board[rowIndex][cellIndex] += 1;
+          if (bottomCell === "X") {
+            board[rowIndex][cellIndex] += 1;
+          }
+          if (bottomLeftCell === "X") {
+            board[rowIndex][cellIndex] += 1;
+          }
+          if (bottomRightCell === "X") {
+            board[rowIndex][cellIndex] += 1;
+          }
         }
       }
     }
@@ -135,31 +135,56 @@ function newBoard() {
 
 newBoard();
 
+// wait until page loads
 window.onload = function() {
   var table = document.getElementById("table");
 
-  // loop through rows
+  // loop through HTML table rows
   for (var tRow = 0; tRow <= 4; tRow++) {
 
-    // loop through cells/columns
+    // loop through HTML cells/columns
     for (var tCell = 0; tCell <= 4; tCell++) {
 
-      // assign values from board to corresponding HTML table cells
+      // assign values from JS board to corresponding HTML table cells
       var boardValueAtIndex = board[tRow][tCell];
-      table.rows[tRow].cells[tCell].innerHTML = boardValueAtIndex;
+      table.rows[tRow].cells[tCell].firstChild.innerHTML = boardValueAtIndex;
     }
   }
+
+  // get list of buttons
+  var buttons = document.getElementsByTagName("button");
+
+  // loop through buttons and assign onclick property
+  for (var i = 0; i < buttons.length; i++) {
+    // reveal tile on click
+    buttons[i].onclick = function() {
+      this.className = "revealed";
+
+      // game over if mine
+      if (this.innerHTML === "X") {
+        alert("Game over!");
+      }
+
+      // victory if all safe tiles revealed
+      else {
+        if (checkSolved()) {
+          alert("Victory!");
+        }
+      }
+    };
+  }
+
+  // returns true if solved, else false
+  function checkSolved() {
+    var solvedStatus = true;
+    for (var i = 0; i < buttons.length; i++) {
+      if (buttons[i].className !== "revealed" && buttons[i].innerHTML !== "X") {
+        solvedStatus = false;
+      }
+    }
+    return solvedStatus;
+  }
 };
-
-//  DECLARE function clickCell
-//    FOR cell
-//      SET text to visible
-//      IF isMine is true
-//        PRINT "You died. Game over."
-
-
-
-
 
 // Refactored Code
 
