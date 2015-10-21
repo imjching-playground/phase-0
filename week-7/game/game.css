@@ -6,7 +6,7 @@ button {
   background-color: teal;
   border: 1px solid black;
   border-radius: 5%;
-  color: gray;
+  color: transparent;
   font-size: 4em;
   font-family: Courier;
   height: 5rem;
