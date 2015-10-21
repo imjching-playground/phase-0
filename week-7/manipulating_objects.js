@@ -1,6 +1,6 @@
  // Manipulating JavaScript Objects
 
-// I worked on this challenge: [by myself, with: ]
+// I worked on this challenge: by myself.
 
 // There is a section below where you will write your code.
 
