@@ -6,9 +6,9 @@ td {
   background-color: teal;
   border: 1px solid black;
   border-radius: 5%;
-  color: transparent;
+  /*color: transparent;*/
   font-size: 4em;
-  font-family: sans-serif;
+  font-family: Courier;
   height: 5rem;
   text-align: center;
   width: 5rem;

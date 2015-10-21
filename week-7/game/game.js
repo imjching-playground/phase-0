@@ -50,7 +50,64 @@
 
 // Initial Code
 
+//  DECLARE function newBoard
+function newBoard() {
+  // initialize board
+  var board = [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0]
+    ];
 
+  // randomize mines
+  for (var rowIndex in board) {
+    for (var cellIndex in board[rowIndex]) {
+      var isMine = false;
+      var rand = Math.floor((Math.random() * 5));
+      if (rand === 0) {
+        board[rowIndex][cellIndex] = true;
+      }
+    }
+  }
+  console.log(board);
+
+  // detect adjacent mine quantities
+  for (rowIndex in board) {
+    for (cellIndex in board[rowIndex]) {
+      // if current cellIndex is not a mine
+      if (board[rowIndex][cellIndex] !== true) {
+        // get indices of neighboring cells
+        var indexLeft = board[rowIndex][Number(cellIndex) - 1];
+        var indexRight = board[rowIndex][Number(cellIndex) + 1];
+        // var indexTop = board[rowIndex + 1][cellIndex];
+        // var indexTopLeft = board[rowIndex - 1][cellIndex - 1];
+        // var indexTopRight = board[rowIndex - 1][cellIndex + 1];
+        // var indexBottom = board[rowIndex - 1][cellIndex];
+        // var indexBottomLeft = board[rowIndex + 1][cellIndex - 1];
+        // var indexBottomRight = board[rowIndex + 1][cellIndex + 1];
+      }
+    }
+  }
+
+  console.log(board);
+}
+
+newBoard();
+
+//    FOR EACH cell in table
+//      ASSIGN variable isMine to undefined
+//      GENERATE random number between 0 - 4.
+//      IF 0
+//        SET isMine to true
+//      ELSE
+//        SET isMine to false
+//        ASSIGN variable minesTouching equal to 0
+//    FOR EACH cell in table
+//      IF isMine is equal to true
+//        FOR EACH cell touching (adjacent or diagonal)
+//          INCREMENT minesTouching by 1
 
 
 
