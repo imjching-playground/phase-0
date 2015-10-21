@@ -25,14 +25,15 @@ MEDIAN_________________________________________________________________________
 
 DEFINE a function called "median()" that takes one parameter "integer_array"
   IF length of "integer_array" is divisible by two (i.e. even)
-    ASSIGN a local variable "middle_two" and set it equal to empty array
-    DIVIDE length of "integer_array" by 2 and push that value to "middle_two"
-    DIVIDE length of "integer_array" by 2, then subtract 1, and push that value
-    to "middle_two"
+    ASSIGN a local variable "middle_two" to an empty array
+    DIVIDE length of "integer_array" by 2 and push the value at that index to
+    "middle_two"
+    DIVIDE length of "integer_array" by 2, then subtract 1, and push the value
+    at that index to "middle_two"
     RETURN the result of calling function "mean()" on "middle_two"
   ELSE (i.e. odd)
-    ASSIGN local variable "middle_index" equal to length of "integer_array"
-    minus 1, then divided by two
+    ASSIGN local variable "middle_index" to length of "integer_array"
+    minus 1, divided by two
     RETURN value in "integer_array" at index "middle_index"
 
 */
