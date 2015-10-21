@@ -50,64 +50,113 @@
 
 // Initial Code
 
-//  DECLARE function newBoard
-function newBoard() {
-  // initialize board
-  var board = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0]
-    ];
+// initialize board
+var board = [
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0]
+  ];
 
-  // randomize mines
+function newBoard() {
+  // randomize mine placement
   for (var rowIndex in board) {
     for (var cellIndex in board[rowIndex]) {
-      var isMine = false;
-      var rand = Math.floor((Math.random() * 5));
+      var rand = Math.floor((Math.random() * 4));
       if (rand === 0) {
-        board[rowIndex][cellIndex] = true;
+        board[rowIndex][cellIndex] = "X";
       }
     }
   }
-  console.log(board);
 
   // detect adjacent mine quantities
   for (rowIndex in board) {
     for (cellIndex in board[rowIndex]) {
-      // if current cellIndex is not a mine
-      if (board[rowIndex][cellIndex] !== true) {
-        // get indices of neighboring cells
-        var indexLeft = board[rowIndex][Number(cellIndex) - 1];
-        var indexRight = board[rowIndex][Number(cellIndex) + 1];
-        // var indexTop = board[rowIndex + 1][cellIndex];
-        // var indexTopLeft = board[rowIndex - 1][cellIndex - 1];
-        // var indexTopRight = board[rowIndex - 1][cellIndex + 1];
-        // var indexBottom = board[rowIndex - 1][cellIndex];
-        // var indexBottomLeft = board[rowIndex + 1][cellIndex - 1];
-        // var indexBottomRight = board[rowIndex + 1][cellIndex + 1];
+      cellIndex = Number(cellIndex);
+      rowIndex = Number(rowIndex);
+
+      // if current cellIndex is safe (not a mine)
+      if (board[rowIndex][cellIndex] !== "X") {
+
+        // check neighboring cells for mines
+        var leftCell = board[rowIndex][cellIndex - 1];
+        var rightCell = board[rowIndex][cellIndex + 1];
+
+        if (leftCell === "X") {
+          board[rowIndex][cellIndex] += 1;
+        }
+        if (rightCell === "X") {
+          board[rowIndex][cellIndex] += 1;
+        }
+
+        // if not top row
+        if (rowIndex > 0) {
+
+          // check cells above for mines
+          var topCell = board[rowIndex - 1][cellIndex];
+          var topLeftCell = board[rowIndex - 1][cellIndex - 1];
+          var topRightCell = board[rowIndex - 1][cellIndex + 1];
+
+          if (topCell === "X") {
+            board[rowIndex][cellIndex] += 1;
+          }
+          if (topLeftCell === "X") {
+            board[rowIndex][cellIndex] += 1;
+          }
+          if (topRightCell === "X") {
+            board[rowIndex][cellIndex] += 1;
+          }
+        }
+
+        // if not bottom row
+        if (rowIndex < 4) {
+
+          // check cells below
+          var bottomCell = board[rowIndex + 1][cellIndex];
+          var bottomLeftCell = board[rowIndex + 1][cellIndex - 1];
+          var bottomRightCell = board[rowIndex + 1][cellIndex + 1];
+        }
+
+        if (bottomCell === "X") {
+          board[rowIndex][cellIndex] += 1;
+        }
+        if (bottomLeftCell === "X") {
+          board[rowIndex][cellIndex] += 1;
+        }
+        if (bottomRightCell === "X") {
+          board[rowIndex][cellIndex] += 1;
+        }
       }
     }
   }
-
   console.log(board);
 }
 
 newBoard();
 
-//    FOR EACH cell in table
-//      ASSIGN variable isMine to undefined
-//      GENERATE random number between 0 - 4.
-//      IF 0
-//        SET isMine to true
-//      ELSE
-//        SET isMine to false
-//        ASSIGN variable minesTouching equal to 0
-//    FOR EACH cell in table
-//      IF isMine is equal to true
-//        FOR EACH cell touching (adjacent or diagonal)
-//          INCREMENT minesTouching by 1
+window.onload = function() {
+  var table = document.getElementById("table");
+
+  // loop through rows
+  for (var tRow = 0; tRow <= 4; tRow++) {
+
+    // loop through cells/columns
+    for (var tCell = 0; tCell <= 4; tCell++) {
+
+      // assign values from board to corresponding HTML table cells
+      var boardValueAtIndex = board[tRow][tCell];
+      table.rows[tRow].cells[tCell].innerHTML = boardValueAtIndex;
+    }
+  }
+};
+
+//  DECLARE function clickCell
+//    FOR cell
+//      SET text to visible
+//      IF isMine is true
+//        PRINT "You died. Game over."
+
 
 
 
