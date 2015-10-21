@@ -1,0 +1,15 @@
+table {
+  background-color: salmon;
+}
+
+td {
+  background-color: teal;
+  border: 1px solid black;
+  border-radius: 5%;
+  color: transparent;
+  font-size: 4em;
+  font-family: sans-serif;
+  height: 5rem;
+  text-align: center;
+  width: 5rem;
+}
