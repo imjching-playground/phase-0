@@ -1,6 +1,6 @@
 # Virus Predictor
 
-# I worked on this challenge with Morgan O'Leary (Guide) and Steven Broderick
+# I worked on this challenge with Morgan O'Leary (Guide) and Gaston Gouron
 # We spent 1.25 hours on this challenge.
 
 #=======================================================================
