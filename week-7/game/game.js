@@ -48,7 +48,9 @@
 //         SET solved equal to false
 //    RETURN solved
 
+// ============================================================================
 // Initial Code
+// ============================================================================
 
 // initialize board
 var board = [
@@ -192,13 +194,22 @@ window.onload = function() {
 
 
 
-
+// ============================================================================
 // Reflection
+// ============================================================================
+// What was the most difficult part of this challenge?
+//    There were a lot of difficult problems that I had to tackle, but the most
+//    difficult was figuring out how to connect my JS array to the table in the
+//    DOM. It was very difficult to refer to specific elements in the HTML
+//    without giving them each an ID, which I didn't want to do since there
+//    are 25 cells by default and I wanted to make it easy to resize.
+
+// What did you learn about creating objects and functions that interact with one another?
+//    Everything, including HTML elements and the page and the window, are JS
+//    objects.
+
+// Did you learn about any new built-in methods you could use in your refactored solution? If so, what were they and how do they work?
 //
-//
-//
-//
-//
-//
-//
-//
+
+// How can you access and manipulate properties of objects?
+//    With dot notation or bracket notation.
