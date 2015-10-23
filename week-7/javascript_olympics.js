@@ -1,8 +1,8 @@
  // JavaScript Olympics
 
-// I paired Steven on this challenge.
+// I paired with Deanna Warren on this challenge.
 
-// This challenge took me 1 hour.
+// This challenge took us 1 hour.
 
 
 // Bulk Up
