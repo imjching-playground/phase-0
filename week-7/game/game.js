@@ -276,7 +276,8 @@ function newBoard() {
       }
     }
   }
-  console.log(board);
+
+  return board;
 }
 
 newBoard();
@@ -309,14 +310,12 @@ window.onload = function() {
 
       // game over if mine
       if (this.innerHTML === "X") {
-        alert("Game over!");
+        alert("You've met with a terrible fate.");
       }
 
       // victory if all safe tiles revealed
-      else {
-        if (checkSolved()) {
-          alert("Victory!");
-        }
+      else if (checkSolved()) {
+        alert("A WINNER IS YOU");
       }
     };
   }
@@ -324,7 +323,11 @@ window.onload = function() {
   // returns true if solved, else false
   function checkSolved() {
     var solvedStatus = true;
+
+    // loop through cells
     for (var i = 0; i < buttons.length; i++) {
+
+      // if any non-mine is still unrevealed, solvedStatus is false
       if (buttons[i].className !== "revealed" && buttons[i].innerHTML !== "X") {
         solvedStatus = false;
       }
@@ -332,7 +335,6 @@ window.onload = function() {
     return solvedStatus;
   }
 };
-
 
 
 // ============================================================================
@@ -352,7 +354,34 @@ window.onload = function() {
 //    objects.
 
 // Did you learn about any new built-in methods you could use in your refactored solution? If so, what were they and how do they work?
-//
+//    I didn't see any methods that would help in my refactored solution. I
+//    mainly swapped the for..in... statements for for-statements and reworded
+//    the conditional on line 316. Next, I would like to try to rebuild this
+//    using HTML canvas tags.
 
 // How can you access and manipulate properties of objects?
 //    With dot notation or bracket notation.
+
+// ============================================================================
+// TODO:
+// ============================================================================
+
+//       HARD
+// convert to canvas
+// prevent first click from being a mine
+// prevent mines from appearing in unguessable locations (e.g. corners
+//  surrounded by other mines)
+
+//       MEDIUM
+// right-click = mark suspected bomb with flag
+// allow user to configure board dimensions
+// allow user to configure number of mines
+// reset board button
+// auto-uncover adjacent 0's
+
+//       EASY
+// color text differently based on number
+// show total mines
+// show mines remaining
+// show blank instead of 0
+// add mine image instead of "X"
