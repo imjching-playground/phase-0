@@ -6,6 +6,23 @@
   <script src="game.js"></script>
 </head>
 <body>
+  <form>
+    <fieldset>
+      <legend>Board Configuration</legend>
+      <div class="form-left">
+        <label for="number-mines">Mines</label>
+        <label for="board-height">Board Height</label>
+        <label for="board-width">Board Width</label>
+      </div>
+      <div class="form-right">
+        <input type="text" name="number-mines">
+        <input type="text" name="board-height">
+        <input type="text" name="board-width">
+        <input class="submit" type="submit" value="Ok">
+      </div>
+    </fieldset>
+  </form>
+
   <table>
     <tbody id="table">
       <!-- row 0 -->
@@ -54,5 +71,21 @@
       </tr>
     </tbody>
   </table>
+
+  <div id="total-mines">
+    <h1>Mines: Total</h1>
+    <p>
+      0
+    </p>
+  </div>
+
+  <div id="remaining-mines">
+    <h1>Mines: Remaining</h1>
+    <p>
+      0
+    </p>
+  </div>
+
+  <input class="submit" type="submit" value="Reset">
 </body>
 </html>

@@ -6,7 +6,7 @@ button {
   background-color: teal;
   border: 1px solid black;
   border-radius: 5%;
-  color: transparent;
+  color: gray;
   font-size: 4em;
   font-family: Courier;
   height: 5rem;
@@ -18,6 +18,3 @@ button {
   color: black;
 }
 
-.game_over {
-  color: red !important;
-}
