@@ -195,82 +195,101 @@
 // Refactored Code
 // ============================================================================
 
-// initialize board
-var board = [
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0]
-  ];
+// board settings
+var boardHeight = 5;
+var boardWidth = 5;
+var mineChance = 4; // chance is 1 / (mineChance - 1)
 
+// display-only elements
+var minesTotal = 0;
+
+// initialize board
+var board = [];
+
+// generate new board
 function newBoard() {
-  // randomize mine placement
-  for (var rowIndex = 0; rowIndex <= 4; rowIndex++) {
-    for (var cellIndex = 0; cellIndex <= 4; cellIndex++) {
-      var rand = Math.floor((Math.random() * 3));
-      if (rand === 0) {
-        board[rowIndex][cellIndex] = "X";
+  // loop to create rows
+  for (var rowNo = 0; rowNo < boardHeight; rowNo++) {
+    var rowOfCells = [];
+
+    // loop to fill each column (index) of rows with Cell objects
+    for (var colNo = 0; colNo < boardWidth; colNo++) {
+
+      // assign cell mineStatus randomly based on mineChance setting
+      newCell = {
+        mineStatus: (((Math.floor(Math.random() * mineChance)) === 0) ? true : false),
+        revealed: false
+      };
+
+      if (newCell.mineStatus === false) {
+        newCell.touching = 0;
       }
+      else {
+        minesTotal += 1;
+      }
+      rowOfCells.push(newCell);
     }
+
+    // push filled row to board
+    board.push(rowOfCells);
   }
 
-  // loop through each cell
-  for (rowIndex = 0; rowIndex <= 4; rowIndex++) {
-    for (cellIndex = 0; cellIndex <= 4; cellIndex++) {
+  // loop through rows and columns to determine neighboring mines touching safe cells
+  for (rowNo = 0; rowNo < boardHeight; rowNo++) {
+    for (colNo = 0; colNo < boardWidth; colNo++) {
 
-      // if current cellIndex is safe (not a mine)
-      if (board[rowIndex][cellIndex] !== "X") {
+      // if current cell is safe (not a mine)
+      if (board[rowNo][colNo].mineStatus === false) {
 
-        // check left/right cells for mines
-        var leftCell = board[rowIndex][cellIndex - 1];
-        var rightCell = board[rowIndex][cellIndex + 1];
-
-        // increment cell value for each mine touching on side
-        if (leftCell === "X") {
-          board[rowIndex][cellIndex] += 1;
+        // if left cell is a mine, increment counter
+        var lefcolNo = board[rowNo][colNo - 1];
+        if (lefcolNo && lefcolNo.mineStatus === true) {
+          board[rowNo][colNo].touching += 1;
         }
-        if (rightCell === "X") {
-          board[rowIndex][cellIndex] += 1;
+
+        // if right cell is a mine, increment counter
+        var righcolNo = board[rowNo][colNo + 1];
+        if (righcolNo && righcolNo.mineStatus === true) {
+          board[rowNo][colNo].touching += 1;
         }
 
         // if not top row
-        if (rowIndex > 0) {
+        if (rowNo > 0) {
 
           // check cells above for mines
-          var topCell = board[rowIndex - 1][cellIndex];
-          var topLeftCell = board[rowIndex - 1][cellIndex - 1];
-          var topRightCell = board[rowIndex - 1][cellIndex + 1];
+          var topCell = board[rowNo - 1][colNo];
+          var topLefcolNo = board[rowNo - 1][colNo - 1];
+          var topRighcolNo = board[rowNo - 1][colNo + 1];
 
           // increment cell value for each mine touching above
-          if (topCell === "X") {
-            board[rowIndex][cellIndex] += 1;
+          if (topCell && topCell.mineStatus === true) {
+            board[rowNo][colNo].touching += 1;
           }
-          if (topLeftCell === "X") {
-            board[rowIndex][cellIndex] += 1;
+          if (topLefcolNo && topLefcolNo.mineStatus === true) {
+            board[rowNo][colNo].touching += 1;
           }
-          if (topRightCell === "X") {
-            board[rowIndex][cellIndex] += 1;
+          if (topRighcolNo && topRighcolNo.mineStatus === true) {
+            board[rowNo][colNo].touching += 1;
           }
         }
 
         // if not bottom row
-        if (rowIndex < 4) {
+        if (rowNo < boardHeight - 1) {
 
           // check cells below
-          var bottomCell = board[rowIndex + 1][cellIndex];
-          var bottomLeftCell = board[rowIndex + 1][cellIndex - 1];
-          var bottomRightCell = board[rowIndex + 1][cellIndex + 1];
+          var bottomCell = board[rowNo + 1][colNo];
+          var bottomLefcolNo = board[rowNo + 1][colNo - 1];
+          var bottomRighcolNo = board[rowNo + 1][colNo + 1];
 
           // increment cell value for each mine touching below
-          if (bottomCell === "X") {
-            board[rowIndex][cellIndex] += 1;
+          if (bottomCell && bottomCell.mineStatus === true) {
+            board[rowNo][colNo].touching += 1;
           }
-          if (bottomLeftCell === "X") {
-            board[rowIndex][cellIndex] += 1;
+          if (bottomLefcolNo && bottomLefcolNo.mineStatus === true) {
+            board[rowNo][colNo].touching += 1;
           }
-          if (bottomRightCell === "X") {
-            board[rowIndex][cellIndex] += 1;
+          if (bottomRighcolNo && bottomRighcolNo.mineStatus === true) {
+            board[rowNo][colNo].touching += 1;
           }
         }
       }
@@ -280,60 +299,108 @@ function newBoard() {
   return board;
 }
 
-newBoard();
 
-// wait until page loads
-window.onload = function() {
-  var table = document.getElementById("table");
+// map JS board values to corresponding HTML table cells
+function applyValues() {
+  var table = document.getElementById("board");
 
-  // loop through HTML table rows
-  for (var tRow = 0; tRow <= 4; tRow++) {
-
-    // loop through HTML cells/columns
-    for (var tCell = 0; tCell <= 4; tCell++) {
+  // loop through HTML table rows and columns
+  for (var rowNo = 0; rowNo < boardHeight; rowNo++) {
+    for (var colNo = 0; colNo < boardWidth; colNo++) {
 
       // assign values from JS board to corresponding HTML table cells
-      var boardValueAtIndex = board[tRow][tCell];
-      table.rows[tRow].cells[tCell].firstChild.innerHTML = boardValueAtIndex;
+      var currentBoardCell = board[rowNo][colNo];
+      if (currentBoardCell.mineStatus === true) {
+        table.rows[rowNo].cells[colNo].firstChild.innerHTML = "X";
+      }
+      else {
+        table.rows[rowNo].cells[colNo].firstChild.innerHTML = currentBoardCell.touching;
+      }
     }
   }
+}
+
+// applies onClick function to all button elements without need for ID property
+function applyClickBehavior() {
 
   // get list of buttons
   var buttons = document.getElementsByTagName("button");
 
-  // loop through buttons and assign onclick property
+  // loop through buttons and assign onclick function
   for (var i = 0; i < buttons.length; i++) {
 
-    // reveal tile on click
+    // reveal tile on click via CSS class change
     buttons[i].onclick = function() {
       this.className = "revealed";
 
+
       // game over if mine
       if (this.innerHTML === "X") {
+        this.className += " mine";
         alert("You've met with a terrible fate.");
       }
 
+      else {
+        // apply different CSS color, depending on number revealed
+        switch(this.innerHTML) {
+          case "1":
+            this.className += " one";
+            break;
+          case "2":
+            this.className += " two";
+            break;
+          case "3":
+            this.className += " three";
+            break;
+          case "4":
+            this.className += " four";
+            break;
+          case "5":
+            this.className += " five";
+            break;
+          case "6":
+            this.className += " six";
+            break;
+          case "7":
+            this.className += " seven";
+            break;
+          case "8":
+            this.className += " eight";
+            break;
+        }
+      }
+
       // victory if all safe tiles revealed
-      else if (checkSolved()) {
+      if (checkSolved()) {
         alert("A WINNER IS YOU");
+      }
+
+      // return true if solved, else false
+      function checkSolved() {
+        var solvedStatus = true;
+
+        // loop through cells
+        for (i = 0; i < buttons.length; i++) {
+
+          // if any non-mine is still unrevealed, set solvedStatus to false
+          if (buttons[i].className === revealed && buttons[i].innerHTML === "X") {
+            solvedStatus = false;
+          }
+        }
+
+        return solvedStatus;
       }
     };
   }
+}
 
-  // returns true if solved, else false
-  function checkSolved() {
-    var solvedStatus = true;
+// generate new board in JS
+newBoard();
 
-    // loop through cells
-    for (var i = 0; i < buttons.length; i++) {
-
-      // if any non-mine is still unrevealed, solvedStatus is false
-      if (buttons[i].className !== "revealed" && buttons[i].innerHTML !== "X") {
-        solvedStatus = false;
-      }
-    }
-    return solvedStatus;
-  }
+// assign board values to HTML table on page load
+window.onload = function() {
+  applyValues();
+  applyClickBehavior();
 };
 
 
@@ -376,12 +443,9 @@ window.onload = function() {
 // right-click = mark suspected bomb with flag
 // allow user to configure board dimensions
 // allow user to configure number of mines
-// reset board button
 // auto-uncover adjacent 0's
 
 //       EASY
-// color text differently based on number
 // show total mines
-// show mines remaining
-// show blank instead of 0
 // add mine image instead of "X"
+// reset board button
