@@ -1,12 +1,18 @@
 table {
-  background-color: salmon;
+}
+
+.counter {
+  background: black;
+  color: lime;
+  font-family: "Courier New";
+  width: 50%;
 }
 
 button {
-  background-color: teal;
+  background-color: black;
   border: 1px solid black;
   border-radius: 5%;
-  color: gray;
+  color: white;
   font-size: 4em;
   font-family: Courier;
   height: 5rem;
@@ -15,6 +21,41 @@ button {
 }
 
 .revealed {
-  color: black;
+  background-color: white;
 }
 
+.mine {
+  color: red;
+}
+
+.one {
+  color: blue;
+}
+
+.two {
+  color: green;
+}
+
+.three {
+  color: teal;
+}
+
+.four {
+  color: purple;
+}
+
+.five {
+  color: salmon;
+}
+
+.six {
+  color: fuchsia;
+}
+
+.seven {
+  color: orange;
+}
+
+.eight {
+  color: pink;
+}

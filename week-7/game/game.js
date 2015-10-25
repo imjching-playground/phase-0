@@ -200,24 +200,32 @@ var boardHeight = 5;
 var boardWidth = 5;
 var mineChance = 4; // chance is 1 / (mineChance - 1)
 
+// display-only elements
+var minesTotal = 0;
+
 // initialize board
 var board = [];
 
+// generate new board
 function newBoard() {
-  // Cell constructor
-  function Cell() {}
-
   // loop to create rows
   for (var rowNo = 0; rowNo < boardHeight; rowNo++) {
     var rowOfCells = [];
 
-    // loop to fill each column (index) of rows with a Cell object
+    // loop to fill each column (index) of rows with Cell objects
     for (var colNo = 0; colNo < boardWidth; colNo++) {
 
-      // assign Cell mineStatus randomly
-      newCell = {mineStatus: ((Math.floor(Math.random() * mineChance)) === 0) ? true : false};
+      // assign cell mineStatus randomly based on mineChance setting
+      newCell = {
+        mineStatus: (((Math.floor(Math.random() * mineChance)) === 0) ? true : false),
+        revealed: false
+      };
+
       if (newCell.mineStatus === false) {
         newCell.touching = 0;
+      }
+      else {
+        minesTotal += 1;
       }
       rowOfCells.push(newCell);
     }
@@ -291,11 +299,10 @@ function newBoard() {
   return board;
 }
 
-console.log(newBoard());
 
-// when HTML is loaded
-window.onload = function() {
-  var table = document.getElementById("table");
+// map JS board values to corresponding HTML table cells
+function applyValues() {
+  var table = document.getElementById("board");
 
   // loop through HTML table rows and columns
   for (var rowNo = 0; rowNo < boardHeight; rowNo++) {
@@ -311,43 +318,89 @@ window.onload = function() {
       }
     }
   }
+}
+
+// applies onClick function to all button elements without need for ID property
+function applyClickBehavior() {
 
   // get list of buttons
   var buttons = document.getElementsByTagName("button");
 
-  // loop through buttons and assign function to onclick property
+  // loop through buttons and assign onclick function
   for (var i = 0; i < buttons.length; i++) {
 
     // reveal tile on click via CSS class change
     buttons[i].onclick = function() {
       this.className = "revealed";
 
+
       // game over if mine
       if (this.innerHTML === "X") {
+        this.className += " mine";
         alert("You've met with a terrible fate.");
       }
 
+      else {
+        // apply different CSS color, depending on number revealed
+        switch(this.innerHTML) {
+          case "1":
+            this.className += " one";
+            break;
+          case "2":
+            this.className += " two";
+            break;
+          case "3":
+            this.className += " three";
+            break;
+          case "4":
+            this.className += " four";
+            break;
+          case "5":
+            this.className += " five";
+            break;
+          case "6":
+            this.className += " six";
+            break;
+          case "7":
+            this.className += " seven";
+            break;
+          case "8":
+            this.className += " eight";
+            break;
+        }
+      }
+
       // victory if all safe tiles revealed
-      else if (checkSolved()) {
+      if (checkSolved()) {
         alert("A WINNER IS YOU");
+      }
+
+      // return true if solved, else false
+      function checkSolved() {
+        var solvedStatus = true;
+
+        // loop through cells
+        for (i = 0; i < buttons.length; i++) {
+
+          // if any non-mine is still unrevealed, set solvedStatus to false
+          if (buttons[i].className === revealed && buttons[i].innerHTML === "X") {
+            solvedStatus = false;
+          }
+        }
+
+        return solvedStatus;
       }
     };
   }
+}
 
-  // returns true if solved, else false
-  function checkSolved() {
-    var solvedStatus = true;
+// generate new board in JS
+newBoard();
 
-    // loop through cells
-    for (var i = 0; i < buttons.length; i++) {
-
-      // if any non-mine is still unrevealed, solvedStatus is false
-      if (buttons[i].className === revealed && buttons[i].innerHTML === "X") {
-        solvedStatus = false;
-      }
-    }
-    return solvedStatus;
-  }
+// assign board values to HTML table on page load
+window.onload = function() {
+  applyValues();
+  applyClickBehavior();
 };
 
 
@@ -390,12 +443,9 @@ window.onload = function() {
 // right-click = mark suspected bomb with flag
 // allow user to configure board dimensions
 // allow user to configure number of mines
-// reset board button
 // auto-uncover adjacent 0's
 
 //       EASY
-// color text differently based on number
 // show total mines
-// show mines remaining
-// show blank instead of 0
 // add mine image instead of "X"
+// reset board button
