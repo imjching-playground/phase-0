@@ -205,17 +205,21 @@ var board = [
   ];
 
 function newBoard() {
-  // randomize mine placement
+  // loop through cells to randomize mine status
   for (var rowIndex = 0; rowIndex <= 4; rowIndex++) {
     for (var cellIndex = 0; cellIndex <= 4; cellIndex++) {
+
+      // random number between 0 and _
       var rand = Math.floor((Math.random() * 3));
+
+      // cell is a mine if 0
       if (rand === 0) {
         board[rowIndex][cellIndex] = "X";
       }
     }
   }
 
-  // loop through each cell
+  // loop through cells to determine neighboring mines touching safe cells
   for (rowIndex = 0; rowIndex <= 4; rowIndex++) {
     for (cellIndex = 0; cellIndex <= 4; cellIndex++) {
 
@@ -282,7 +286,7 @@ function newBoard() {
 
 newBoard();
 
-// wait until page loads
+// when HTML is loaded
 window.onload = function() {
   var table = document.getElementById("table");
 
@@ -301,10 +305,10 @@ window.onload = function() {
   // get list of buttons
   var buttons = document.getElementsByTagName("button");
 
-  // loop through buttons and assign onclick property
+  // loop through buttons and assign function to onclick property
   for (var i = 0; i < buttons.length; i++) {
 
-    // reveal tile on click
+    // reveal tile on click via CSS class change
     buttons[i].onclick = function() {
       this.className = "revealed";
 
