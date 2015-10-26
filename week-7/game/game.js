@@ -366,6 +366,9 @@ function applyButtonBehavior() {
       // apply CSS color to safe tiles, depending on number revealed
       else {
         switch(this.innerHTML) {
+          case "0":
+            this.className += " zero";
+            break;
           case "1":
             this.className += " one";
             break;

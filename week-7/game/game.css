@@ -1,6 +1,3 @@
-table {
-}
-
 .counter {
   background: black;
   color: lime;
@@ -13,7 +10,7 @@ table {
   background-color: black;
   border: 1px solid black;
   border-radius: 5%;
-  color: gray;
+  color: transparent;
   font-size: 4em;
   font-family: Courier;
   font-weight: bold;
@@ -38,6 +35,9 @@ table {
   color: red;
 }
 
+.zero {
+  color: #909090; /* gray */
+}
 .one {
   color: blue;
 }
