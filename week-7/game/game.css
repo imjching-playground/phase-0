@@ -5,16 +5,18 @@ table {
   background: black;
   color: lime;
   font-family: "Courier New";
-  width: 50%;
+  text-align: center;
+  width: 25%;
 }
 
-button {
+.cell {
   background-color: black;
   border: 1px solid black;
   border-radius: 5%;
-  color: white;
+  color: gray;
   font-size: 4em;
   font-family: Courier;
+  font-weight: bold;
   height: 5rem;
   text-align: center;
   width: 5rem;
@@ -22,6 +24,14 @@ button {
 
 .revealed {
   background-color: white;
+}
+
+.unfound {
+  color: yellow;
+}
+
+.marked {
+  background-color: red;
 }
 
 .mine {

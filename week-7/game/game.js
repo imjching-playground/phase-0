@@ -196,12 +196,11 @@
 // ============================================================================
 
 // board settings
-var boardHeight = 5;
-var boardWidth = 5;
-var mineChance = 4; // chance is 1 / (mineChance - 1)
+var boardHeight = 5; var boardWidth = 5;
+var mineChance = 5; // probability of mine is 1 / (mineChance - 1)
 
-// display-only elements
-var minesTotal = 0;
+// mine-counter
+var mineCount = 0;
 
 // initialize board
 var board = [];
@@ -218,14 +217,13 @@ function newBoard() {
       // assign cell mineStatus randomly based on mineChance setting
       newCell = {
         mineStatus: (((Math.floor(Math.random() * mineChance)) === 0) ? true : false),
-        revealed: false
       };
 
       if (newCell.mineStatus === false) {
         newCell.touching = 0;
       }
       else {
-        minesTotal += 1;
+        mineCount += 1;
       }
       rowOfCells.push(newCell);
     }
@@ -299,7 +297,6 @@ function newBoard() {
   return board;
 }
 
-
 // map JS board values to corresponding HTML table cells
 function applyValues() {
   var table = document.getElementById("board");
@@ -307,6 +304,9 @@ function applyValues() {
   // loop through HTML table rows and columns
   for (var rowNo = 0; rowNo < boardHeight; rowNo++) {
     for (var colNo = 0; colNo < boardWidth; colNo++) {
+
+      // reset any class changes from previous games
+      table.rows[rowNo].cells[colNo].firstChild.className = "cell";
 
       // assign values from JS board to corresponding HTML table cells
       var currentBoardCell = board[rowNo][colNo];
@@ -320,28 +320,51 @@ function applyValues() {
   }
 }
 
-// applies onClick function to all button elements without need for ID property
-function applyClickBehavior() {
+// applies onclick function to all button elements without explicit ID
+function applyButtonBehavior() {
+
+  // return true if solved, else false
+  function checkSolved() {
+    var solvedStatus = true;
+    for (i = 0; i < buttons.length; i++) {
+      if (buttons[i].className.indexOf("revealed") < 0 && buttons[i].innerHTML !== "X") {
+        solvedStatus = false;
+      }
+    }
+    return solvedStatus;
+  }
+
+  // show unfound tiles with special formatting
+  function revealBoard() {
+    for (i = 0; i < buttons.length; i++) {
+      if (buttons[i].className.indexOf("revealed") < 0) {
+        buttons[i].className += " unfound";
+      }
+    }
+  }
 
   // get list of buttons
-  var buttons = document.getElementsByTagName("button");
+  var buttons = document.getElementsByClassName("cell");
 
   // loop through buttons and assign onclick function
   for (var i = 0; i < buttons.length; i++) {
-
-    // reveal tile on click via CSS class change
     buttons[i].onclick = function() {
-      this.className = "revealed";
 
+      // reveal tile on click via CSS class change
+      this.className += " revealed";
+
+      // victory if all safe tiles revealed
+      if (this.innerHTML !== "X" && checkSolved()) alert("A WINNER IS YOU!");
 
       // game over if mine
       if (this.innerHTML === "X") {
         this.className += " mine";
-        alert("You've met with a terrible fate.");
+        revealBoard();
+        alert("You've met with a terrible fate :(");
       }
 
+      // apply CSS color to safe tiles, depending on number revealed
       else {
-        // apply different CSS color, depending on number revealed
         switch(this.innerHTML) {
           case "1":
             this.className += " one";
@@ -369,38 +392,68 @@ function applyClickBehavior() {
             break;
         }
       }
+    };
 
-      // victory if all safe tiles revealed
-      if (checkSolved()) {
-        alert("A WINNER IS YOU");
-      }
-
-      // return true if solved, else false
-      function checkSolved() {
-        var solvedStatus = true;
-
-        // loop through cells
-        for (i = 0; i < buttons.length; i++) {
-
-          // if any non-mine is still unrevealed, set solvedStatus to false
-          if (buttons[i].className === revealed && buttons[i].innerHTML === "X") {
-            solvedStatus = false;
-          }
-        }
-
-        return solvedStatus;
-      }
+    // right-click mine-marking functionality
+    buttons[i].oncontextmenu = function() {
+      this.className += " marked";
+      return false;
     };
   }
 }
 
-// generate new board in JS
-newBoard();
+function setMineCounter() {
+  var counter = document.getElementById("counter");
+  counter.innerHTML = mineCount;
+}
 
-// assign board values to HTML table on page load
-window.onload = function() {
+function resetBoard() {
+  mineChance = getDifficulty();
+  mineCount = 0;
+  board = [];
+  newBoard();
+  setMineCounter();
   applyValues();
-  applyClickBehavior();
+  applyButtonBehavior();
+}
+
+// check radio button inputs and return corresponding mine chance
+function getDifficulty() {
+  var radioButtons = document.getElementsByName("mine-chance");
+
+  for (i = 0; i < 3; i++) {
+    if (radioButtons[i].checked) {
+      switch(i) {
+        case 0:
+          difficulty = 5;
+          break;
+        case 1:
+          difficulty = 4;
+          break;
+        case 2:
+          difficulty = 3;
+          break;
+      }
+    }
+  }
+
+  return difficulty;
+}
+
+// reset button
+function resetButtonBehavior() {
+  document.getElementById("reset").onclick = function() {
+    resetBoard();
+  };
+}
+
+// assign board values to HTML table and click behavior to buttons on page load
+window.onload = function() {
+  newBoard();
+  setMineCounter();
+  applyValues();
+  applyButtonBehavior();
+  resetButtonBehavior();
 };
 
 
@@ -412,9 +465,10 @@ window.onload = function() {
 //    difficult was figuring out how to connect my JS array to the table in the
 //    DOM. It was very difficult to refer to specific elements in the HTML
 //    without giving them each an ID, which I didn't want to do since there
-//    are 25 cells by default and I wanted to make it easy to resize. Looping
-//    through the HTML table was hard; I will try to rebuild this using canvas
-//    when I have time.
+//    are 25 cells by default and I wanted to make it easy to resize. If I were 
+//    to rebuild it, I would assign ID's but do so dynamically. I might also do
+//    away with the nested array structure altogether, since it makes looping
+//    complicated.
 
 // What did you learn about creating objects and functions that interact with one another?
 //    Everything, including HTML elements and the page and the window, are JS
@@ -422,9 +476,8 @@ window.onload = function() {
 
 // Did you learn about any new built-in methods you could use in your refactored solution? If so, what were they and how do they work?
 //    I didn't see any methods that would help in my refactored solution. I
-//    mainly swapped the for..in... statements for for-statements and reworded
-//    the conditional on line 316. Next, I would like to try to rebuild this
-//    using HTML canvas tags.
+//    mainly swapped the for..in... statements for for-statements, rephrased
+//    conditionals, abstracted certain functionality, and added new features.
 
 // How can you access and manipulate properties of objects?
 //    With dot notation or bracket notation.
@@ -433,19 +486,10 @@ window.onload = function() {
 // TODO:
 // ============================================================================
 
-//       HARD
-// convert to canvas
+// convert to canvas(?)
 // prevent first click from being a mine
 // prevent mines from appearing in unguessable locations (e.g. corners
 //  surrounded by other mines)
-
-//       MEDIUM
-// right-click = mark suspected bomb with flag
+// auto-uncover adjacent 0's
 // allow user to configure board dimensions
 // allow user to configure number of mines
-// auto-uncover adjacent 0's
-
-//       EASY
-// show total mines
-// add mine image instead of "X"
-// reset board button
