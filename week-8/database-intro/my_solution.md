@@ -49,7 +49,7 @@
 They are for storing, organizing, and accessing large amounts of information.
 
 ####What is a one-to-many relationship?
-It is a situation where you have several items in relationship where one of them is actually a category that contains the others.
+It is a situation where you have several items in relationship where one of them is actually a category that contains the others, to the exclusion of other categories. For example, planets can be "gas giants" or "terrestrial", but they cannot be both. The planet and the category have a one-to-many relationship, where the category has many planets but the planets have only one category.
 
 ####What is a primary key? What is a foreign key? How can you determine which is which?
 A primary key is a unique index that is required for uniquely identifying records in a SQL database/table. They are usually assigned automatically via incrementing or other mechanisms when a record is added.
