@@ -1,12 +1,14 @@
-#CHALLENGE 8.4
 ##Release 2
 ![Cities and Wealthiest Residents](./imgs/one-to-one.png "one-to-one relationship schema")
+
 The relationship between a city and its wealthiest resident is one-to-one, because only one person in a city can be the wealthiest (OK, a tie could occur, but that's incredibly unlikely).
 
 In order for this to be a one-to-one relationship, the relationship must also work in reverse, meaning the wealthiest resident cannot be the wealthiest resident in more than one city. That requires a definition of "resident" that precludes residence in multiple cities. Let's assume that is the case in this dataset.
 
+
 ##Release 4
 ![Grocery List](./imgs/many-to-many.png "many-to-many-relationship schema")
+
 
 ##Reflection
 ####What is a one-to-one database?
