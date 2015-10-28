@@ -66,7 +66,7 @@ gradebook.getAverage = function(name) {
 };
 
 var average = function(array) {
-  // this only works in newer versioins of JS:
+  // (this one-line solution only works in newer versions of JS:)
   // return array.reduce((a,b) => a + b)/array.length;
 
   function add(a,b) {return a + b;}
@@ -77,13 +77,20 @@ var average = function(array) {
 // __________________________________________
 // Reflect
 
+// What did you learn about adding functions to objects?
+//   When defining a method, you can use keyword "this" in the definition
+//   instead of wherever you have the invoking object's name. In our case, we
+//   replaced gradebook with this in our two methods.
 
+// How did you iterate over nested arrays in JavaScript?
+//   We didn't need to iterate over the inner elements, only the outer elements
+//   which were arrays. We just used a for loop.
 
-
-
-
-
-
+// Were there any new methods you were able to incorporate? If so, what were they and how did they work?
+//   Yes, we found a good use of the Array.reduce method. We were able to
+//   condense the solution to the average function significantly by using block
+//   syntax, but it didn't run in the terminal on our version of node (it
+//   worked fine in CoderPad, though, which is on a newer version).
 
 // __________________________________________
 // Test Code:  Do not alter code below this line.
