@@ -169,8 +169,20 @@ for (var office in voteCount){
 // __________________________________________
 // Reflection
 
+// What did you learn about iterating over nested objects in JavaScript?
+//   It's very helpful to give each nesting level a descriptive variable name
+//   to reduce the length of code needed to reference that element in the
+//   parent object.
 
+// Were you able to find useful methods to help you with this?
+//   No, we essentially used a lot of for..in... loops. We considered replacing
+//   the middle loop by using the Math.max method, but in order to get the
+//   array of numbers for Math.max, we would have had to loop through the object
+//   to get the values, so it seemed pointless to replace one for loop with
+//   another.
 
+// What concepts were solidified in the process of working through this challenge?
+//   It helped solidify the situations where bracket notation is required.
 
 
 
