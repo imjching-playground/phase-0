@@ -1,7 +1,7 @@
 // Tally Votes in JavaScript Pairing Challenge.
 
-// I worked on this challenge with:
-// This challenge took me [#] hours.
+// I worked on this challenge with Jeremy Powell:
+// This challenge took me 3 hours.
 
 // These are the votes cast by each student. Do not alter these objects here.
 var votes = {
@@ -31,7 +31,7 @@ var votes = {
   "Xavier": { president: "Steve", vicePresident: "Hermann", secretary: "Fred", treasurer: "Ivy" },
   "Yvonne": { president: "Bob", vicePresident: "Zane", secretary: "Fred", treasurer: "Hermann" },
   "Zane": { president: "Louise", vicePresident: "Hermann", secretary: "Fred", treasurer: "Mary" }
-}
+};
 
 // Tally the votes in voteCount.
 var voteCount = {
@@ -39,7 +39,7 @@ var voteCount = {
   vicePresident: {},
   secretary: {},
   treasurer: {}
-}
+};
 
 /* The name of each student receiving a vote for an office should become a property
 of the respective office in voteCount.  After Alex's votes have been tallied,
@@ -60,27 +60,111 @@ var officers = {
   vicePresident: undefined,
   secretary: undefined,
   treasurer: undefined
-}
+};
 
 // Pseudocode
+
+// for each person in votes
+//   //check president
+//   assign variable prezVote to - access president property(in vote object) and
+//   if prezVote property of president in voteCount for exists- increment 1
+//   else set prezVote property of president in voteCount with value 1
+
+//   //check VP
+//   assign variable vpVote to - access vicePresident property(in vote object) and
+//   if vpVote property of vicePresident in voteCount for exists- increment 1
+//   else set vpVote property of vicePresident in voteCount with value 1
+
+//   //check secretary
+//   assign variable secretaryVote to - access secretary property(in vote object) and
+//   if secretaryVote property of secretary in voteCount for exists- increment 1
+//   else set secretaryVote property of secretary in voteCount with value 1
+
+//   //check treasurer
+//   assign variable tresVote to - access treasurer property(in vote object) and
+//   if tresVote property of treasurer in voteCount for exists- increment 1
+//   else set tresVote property of treasurer in voteCount with value 1
 
 
 // __________________________________________
 // Initial Solution
 
+//   function tally(voteList){
+//     for (var voter in voteList){
+//       // console.log(voter);
+//       for (var office in voteList[voter]){
+//         // console.log(office);
+//         var votedFor = voteList[voter][office]
+//         if (voteCount[office][votedFor]){
+//           voteCount[office][votedFor] += 1;
+//         }
+//         else {
+//           voteCount[office][votedFor] = 1;
+//         }
+//       }
+//     }
+//     return voteCount;
+//   };
+//   // var answer = console.log(tally(voteList));
+//   // answer;
 
+//   function elect(voteList){
+//     for (var office in voteList){
+//       var max = 0;
+//       for (var candidate in voteList[office]){
+//         if (voteList[office][candidate] > max){
+//           max = voteList[office][candidate];
+//         }
+//       }
 
-
-
+//       var winner;
+//       for (var candidate in voteList[office]){
+//         if (voteList[office][candidate] === max){
+//           winner = candidate;
+//           // console.log(winner, office);
+//           officers[office] = winner;
+//         }
+//       }
+//     }
+//     return officers;
+//   };
+// // console.log(elect(tally(votes)));
+// // console.log(elect(answer));
+// tally(votes);
+// console.log(elect(tally(votes)));
 
 
 // __________________________________________
 // Refactored Solution
 
-
-
-
-
+// calculate all votes by candidate and office
+for (var voter in votes){
+  for (var office in votes[voter]){
+    var votedFor = votes[voter][office];
+    if (voteCount[office][votedFor]){
+      voteCount[office][votedFor] += 1;
+    }
+    else {
+      voteCount[office][votedFor] = 1;
+    }
+  }
+}
+// calculate top voted candidate
+for (var office in voteCount){
+  // calculate max vote for each office
+  var max = 0;
+  for (var candidate in voteCount[office]){
+    if (voteCount[office][candidate] > max){
+      max = voteCount[office][candidate];
+    }
+  }
+  // find candidate with max votes in each office
+  for (candidate in voteCount[office]){
+    if (voteCount[office][candidate] === max){
+      officers[office] = candidate;
+    }
+  }
+}
 
 // __________________________________________
 // Reflection
