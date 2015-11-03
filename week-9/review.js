@@ -41,3 +41,40 @@ function update(item_name, qty_change) {
 function print_list() {
   console.log(grocery_list);
 }
+
+// Test code
+
+make_list();
+console.log("Empty list:", grocery_list);
+
+add("bananas", 10);
+add("apples", 5);
+console.log("10 bananas, 5 apples added:", grocery_list);
+
+remove("apples");
+console.log("apples removed:", grocery_list);
+
+update("bananas", -5);
+console.log("subtracted 5 bananas:", grocery_list);
+
+print_list();
+
+/*
+===============================================================================
+Reflection
+===============================================================================
+What concepts did you solidify in working on this challenge? (reviewing the
+passing of information, objects, constructors, etc.)
+  I found it pretty easy. I could add functionality, but for the purpose of
+  the challenge I think the code is clean and would not gain anything from
+  refactoring.
+
+What was the most difficult part of this challenge?
+  Without creating a DOM, it is hard to create a nice print function. That
+  doesn't really matter, since no one really uses JS without a DOM in the real
+  world.
+
+Did an array or object make more sense to use and why?
+  I used an object so that I could have item names as property and quantities
+  as values.
+*/
