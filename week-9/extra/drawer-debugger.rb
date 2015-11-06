@@ -1,62 +1,67 @@
 # Drawer Debugger
 
-# I worked on this challenge [by myself, with: ].
-# I spent [#] hours on this challenge.
+# I worked on this challenge by myself.
+# I spent 0.5 hours on this challenge.
 
 # Original Code
 
 class Drawer
 
-attr_reader :contents
+	attr_reader :contents
 
-# Are there any more methods needed in this class?
+	# Are there any more methods needed in this class?
 
-def initialize
-@contents = []
-@open = true
-end
+	def initialize
+		@contents = []
+		@open = true
+	end
 
-def open
-@open = true
-end
+	def open
+		@open = true
+	end
 
-def close
-@open = false
-end
+	def close
+		@open = false
+	end
 
-def add_item
-@contents << item
-end
+	def add_item(item)
+		@contents << item
+	end
 
-def remove_item(item = @contents.pop) #what is `#pop` doing?
-@contents.delete(item)
-end
+	def remove_item(item = @contents.pop) #what is `#pop` doing?
+		@contents.delete(item)
+	end
 
-def dump  # what should this method return?
-puts "Your drawer is empty."
-end
+	def dump  # what should this method return?
+		@contents.clear
+		puts "Your drawer is empty."
+	end
 
-def view_contents
-puts "The drawer contains:"
-@contents.each {|silverware| puts "- " + silverware.type }
+	def view_contents
+		puts "The drawer contains:"
+		@contents.each {|silverware| puts "- " + silverware.type }
+	end
 end
 
 
 class Silverware
-attr_reader :type
+	attr_reader :type, :clean
 
-# Are there any more methods needed in this class?
+	# Are there any more methods needed in this class?
 
-def initialize(type, clean = true)
-@type = type
-@clean = clean
-end
+	def initialize(type, clean = true)
+		@type = type
+		@clean = clean
+	end
 
-def eat
-puts "eating with the #{type}"
-@clean = false
-end
+	def eat
+		puts "eating with the #{type}"
+		@clean = false
+	end
 
+	def clean_silverware
+		@clean = true
+	end
 end
 
 
@@ -90,6 +95,8 @@ raise Exception.new("Your drawer is not actually empty") unless silverware_drawe
 silverware_drawer.view_contents
 
 # What will you need here in order to remove a spoon? You may modify the driver code for this error.
+spoon = Silverware.new("spoon")
+silverware_drawer.add_item(spoon)
 raise Exception.new("You don't have a spoon to remove") unless silverware_drawer.contents.include?(spoon)
 silverware_drawer.remove_item(spoon) #What is happening when you run this the first time?
 spoon.eat
